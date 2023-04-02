@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kohta 3</title>
+  </head>
+  <body>
+  
+    <script>
+let dogNames = [];
+
+
+for (let i = 0; i < 6; i++) {
+  let name = prompt(`Enter name of dog ${i + 1}:`);
+  dogNames.push(name);
+}
+
+dogNames.sort().reverse();
+
+// create unordered list element and add dog names as list items
+let ul = document.createElement("ul");
+for (let i = 0; i < 6; i++) {
+  let li = document.createElement("li");
+  li.appendChild(document.createTextNode(dogNames[i]));
+  ul.appendChild(li);
+}
+
+document.body.appendChild(ul);
+    </script>
+  </body>
+</html>
