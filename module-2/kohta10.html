@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kohta 1</title>
+  </head>
+  <body>
+  
+    <script>
+
+let numCandidates = parseInt(prompt("Enter the number of candidates:"));
+
+
+let candidates = [];
+
+// prompt user for names of candidates and initialize votes to zero
+for (let i = 1; i <= numCandidates; i++) {
+  let name = prompt(`Name for candidate ${i}:`);
+  candidates.push({
+    name: name,
+    votes: 0
+  });
+}
+
+let numVoters = parseInt(prompt("Enter the number of voters:"));
+
+// loop through each voter and ask for their vote
+for (let i = 1; i <= numVoters; i++) {
+  let vote = prompt(`Vote of voter ${i} (enter candidate name or leave blank for empty vote):`);
+  
+  // find the candidate in the candidates array and increment their vote count
+  for (let j = 0; j < candidates.length; j++) {
+    if (candidates[j].name === vote) {
+      candidates[j].votes++;
+      break;
+    }
+  }
+}
+
+
+candidates.sort(function(a, b) {
+  return b.votes - a.votes;
+});
+
+console.log(`The winner is ${candidates[0].name} with ${candidates[0].votes} votes.`);
+console.log("Results:");
+for (let i = 0; i < candidates.length; i++) {
+  console.log(`${candidates[i].name}: ${candidates[i].votes} votes`);
+}
+ 
+    </script>
+  </body>
+</html>
