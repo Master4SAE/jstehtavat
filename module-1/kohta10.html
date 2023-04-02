@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dice Probability Calculator</title>
+</head>
+<body>
+	<h1>Dice Probability Calculator</h1>
+	<label for="numDice">Number of Dice:</label>
+	<input type="number" id="numDice">
+	<label for="sumEyes">Desired Sum of Eyes:</label>
+	<input type="number" id="sumEyes">
+	<button onclick="calculate()">Calculate</button>
+	<p id="result"></p>
+	<script>
+		function calculate() {
+			var numDice = parseInt(document.getElementById("numDice").value);
+			var sumEyes = parseInt(document.getElementById("sumEyes").value);
+			var count = 0;
+			var numRolls = 10000;
+			for (var i = 0; i < numRolls; i++) {
+				var sum = 0;
+				for (var j = 0; j < numDice; j++) {
+					sum += Math.floor(Math.random() * 6) + 1;
+				}
+				if (sum == sumEyes) {
+					count++;
+				}
+			}
+			var probability = (count / numRolls * 100).toFixed(2);
+			document.getElementById("result").innerHTML = "Probability to get sum " + sumEyes + " with " + numDice + " dice is " + probability + "%";
+		}
+	</script>
+</body>
+</html>
